@@ -1,0 +1,24 @@
+# Eclipse/STS
+.classpath
+.project
+.settings/
+**/.factorypath
+**/.springBeans
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Maven
+**/target/
+
+# VS Code
+.vscode/
+.sts4-cache/
+
+.kube/
+
+#mvn
+**/*.versionsBackup
+**/*~
