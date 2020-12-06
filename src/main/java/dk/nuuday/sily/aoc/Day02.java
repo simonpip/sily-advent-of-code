@@ -3,6 +3,9 @@ package dk.nuuday.sily.aoc;
 import java.util.List;
 
 class Day02 {
+    private Day02() {
+    }
+
     static int countValidPasswords(List<Password> passwords) {
         return (int) passwords.stream().filter(Day02::isValidPassword).count();
     }

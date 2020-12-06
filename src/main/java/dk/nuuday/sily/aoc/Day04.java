@@ -1,5 +1,7 @@
 package dk.nuuday.sily.aoc;
 
+import dk.nuuday.sily.aoc.util.LineUtil;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,6 +10,9 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class Day04 {
+    private Day04() {
+    }
+
     static long countValidPassports(List<Passport> passports) {
         return passports.stream().filter(Passport::isValid).count();
     }
@@ -17,22 +22,9 @@ public class Day04 {
     }
 
     static List<Passport> convertToPassports(List<String> strings) {
-        List<String> combinedStrings = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
-        for (String string : strings) {
-            if (string.isEmpty()) {
-                combinedStrings.add(sb.toString());
-                sb = new StringBuilder();
-                continue;
-            }
-            if (sb.length() != 0) {
-                sb.append(" ");
-            }
-            sb.append(string);
-        }
-        combinedStrings.add(sb.toString());
+        List<String> groups = LineUtil.combineGroups(strings, " ");
 
-        return combinedStrings.stream().map(Passport::new).collect(Collectors.toList());
+        return groups.stream().map(Passport::new).collect(Collectors.toList());
     }
 
     static final class Passport {

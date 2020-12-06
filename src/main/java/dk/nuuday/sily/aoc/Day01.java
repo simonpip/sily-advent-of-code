@@ -6,6 +6,9 @@ import java.util.stream.Collectors;
 class Day01 {
     private static final int WANTED_SUM = 2020;
 
+    private Day01() {
+    }
+
     static int fixExpenseReport(List<Integer> entries) {
         int[] numbers = findNumbersSummingTo(entries, WANTED_SUM);
 

@@ -5,6 +5,9 @@ import java.util.Comparator;
 import java.util.List;
 
 class Day05 {
+    private Day05() {
+    }
+
     static int findHighestTakenSeat(List<BoardingPass> boardingPasses) {
         return boardingPasses.stream().map(b -> b.seatId).max(Comparator.naturalOrder()).get();
     }

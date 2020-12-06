@@ -11,12 +11,23 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class FileUtil {
+    private FileUtil() {
+    }
+
     public static <T> List<T> readLines(String resourceName, Function<String, T> convert) throws IOException {
         String text = readFile(resourceName);
 
         return Arrays.stream(text.split("\n"))
                 .map(String::trim)
                 .map(convert)
+                .collect(Collectors.toList());
+    }
+
+    public static List<String> readLines(String resourceName) throws IOException {
+        String text = readFile(resourceName);
+
+        return Arrays.stream(text.split("\n"))
+                .map(String::trim)
                 .collect(Collectors.toList());
     }
 

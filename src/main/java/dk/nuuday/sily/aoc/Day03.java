@@ -3,6 +3,9 @@ package dk.nuuday.sily.aoc;
 import java.util.List;
 
 class Day03 {
+    private Day03() {
+    }
+
     static long countTrees(Landscape landscape) {
         return countTrees(landscape, 3, 1);
     }
