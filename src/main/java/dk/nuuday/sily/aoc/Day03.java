@@ -1,5 +1,7 @@
 package dk.nuuday.sily.aoc;
 
+import dk.nuuday.sily.aoc.util.Grid;
+
 import java.util.List;
 
 class Day03 {
@@ -22,7 +24,7 @@ class Day03 {
         int x = left;
         int y = down;
         long count = 0;
-        while (y < landscape.height) {
+        while (y < landscape.getHeight()) {
             if (landscape.isTree(x, y)) {
                 count++;
             }
@@ -34,31 +36,15 @@ class Day03 {
         return count;
     }
 
-    static final class Landscape {
+    static final class Landscape extends Grid<Boolean> {
         private static final char TREE = '#';
 
-        private final int height;
-        private final int width;
-        private final boolean[][] landscape;
-
         Landscape(List<String> strings) {
-            height = strings.size();
-            width = strings.get(0).length();
-            landscape = new boolean[width][height];
-
-            for (int i = 0; i < strings.size(); i++) {
-                String string = strings.get(i);
-
-                for (int j = 0; j < string.length(); j++) {
-                    char letter = string.charAt(j);
-
-                    landscape[j][i] = letter == TREE;
-                }
-            }
+            super(strings, c -> c.equals(TREE));
         }
 
         boolean isTree(int x, int y) {
-            return landscape[x % width][y];
+            return get(x % getWidth(), y);
         }
     }
 }
