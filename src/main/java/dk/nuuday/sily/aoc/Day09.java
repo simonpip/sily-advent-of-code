@@ -7,6 +7,9 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 class Day09 {
+    private Day09() {
+    }
+
     static long findWeakness(List<Long> code, int preambleLength) {
         for (int i = preambleLength; i < code.size(); i++) {
             Long value = code.get(i);

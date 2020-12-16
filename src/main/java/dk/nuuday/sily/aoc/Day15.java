@@ -3,7 +3,10 @@ package dk.nuuday.sily.aoc;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Day15 {
+class Day15 {
+    private Day15() {
+    }
+
     static long findNumber(String initialSequence, int wantedIndex) {
         String[] initialSequenceParts = initialSequence.split(",");
         long[] array = new long[wantedIndex];

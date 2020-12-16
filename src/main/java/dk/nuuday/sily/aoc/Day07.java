@@ -13,6 +13,9 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Day07 {
+    private Day07() {
+    }
+
     static int findCountOfOuterBags(List<String> descriptions, String innerBag) {
         Map<String, Bag> bagMap = decodeBags(descriptions);
 

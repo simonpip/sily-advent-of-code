@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 class Day12 {
+    private Day12() {
+    }
+
     static int calculateLocation(List<Instruction> instructions) {
         int[] location = new int[2];
         Heading heading = new Heading();

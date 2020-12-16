@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.function.Function;
 
 class Day11 {
+    private Day11() {
+    }
+
     static int countOccupiedSeats(Seating seating) {
         return countOccupiedSeats(seating, Day11::doGameOfLifeStep);
     }

@@ -8,6 +8,9 @@ import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 class Day14 {
+    private Day14() {
+    }
+
     static long sumMaskedNumbers(Program program) {
         Mask mask = null;
         Map<Long, Long> values = new HashMap<>();

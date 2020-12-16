@@ -2,13 +2,12 @@ package dk.nuuday.sily.aoc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 class Day13 {
+    private Day13() {
+    }
+
     static int findEarliestBus(Schedule schedule) {
         int waitTime = schedule.departTime;
         int route = 0;
@@ -47,7 +46,7 @@ class Day13 {
         return sum % product;
     }
 
-    private static long computeInverse(long a, long b){
+    private static long computeInverse(long a, long b) {
         long m = b, t, q;
         long x = 0, y = 1;
         if (b == 1)
@@ -58,7 +57,8 @@ class Day13 {
             q = a / b;
             t = b;
             // now proceed same as Euclid's algorithm
-            b = a % b;a = t;
+            b = a % b;
+            a = t;
             t = x;
             x = y - q * x;
             y = t;

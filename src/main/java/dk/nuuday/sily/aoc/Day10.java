@@ -2,23 +2,15 @@ package dk.nuuday.sily.aoc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
-public class Day10 {
+class Day10 {
+    private Day10() {
+    }
+
     static long getAdapterJumpsMultiplied(List<Integer> adapters) {
         long[] jumps = getAdapterJumps(adapters);
         if (jumps.length < 3) {
