@@ -48,7 +48,7 @@ public class Day10Test {
 
     @Test
     public void testCountDistinctAdapterConfigurationsExample2() throws IOException {
-        List<Integer> adapters = FileUtil.readLines("day10LargeExample.txt", Integer::valueOf);
+        List<Integer> adapters = FileUtil.readLines("day10_large_example.txt", Integer::valueOf);
 
         long actual = Day10.countDistinctAdapterConfigurations(adapters);
 
