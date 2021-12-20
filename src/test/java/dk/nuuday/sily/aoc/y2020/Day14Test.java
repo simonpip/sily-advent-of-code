@@ -6,8 +6,8 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 public class Day14Test {
     private static final Day14.Program EXAMPLE_DATA = new Day14.Program(List.of(

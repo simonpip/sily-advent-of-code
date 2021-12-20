@@ -6,8 +6,8 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 public class Day05Test {
     private static final List<Day05.BoardingPass> EXAMPLE_DATA = List.of(
