@@ -1,5 +1,7 @@
 package dk.nuuday.sily.aoc.y2022;
 
+import dk.nuuday.sily.aoc.util.Coordinate;
+
 import java.util.*;
 
 public class Day09 {
@@ -14,10 +16,10 @@ public class Day09 {
 
         for (Operation operation : operations) {
             for (int i = 0; i < operation.times; i++) {
-                knotCoords[0] = knotCoords[0].transform(operation.direction);
+                knotCoords[0] = transform(knotCoords[0], operation.direction);
 
                 for (int j = 1; j < knotCoords.length; j++) {
-                    knotCoords[j] = knotCoords[j].follow(knotCoords[j - 1]);
+                    knotCoords[j] = follow(knotCoords[j], knotCoords[j - 1]);
                 }
 
                 tailCoordinates.add(knotCoords[knotCoords.length - 1]);
@@ -27,49 +29,28 @@ public class Day09 {
         return tailCoordinates.size();
     }
 
-    private static class Coordinate {
-        private final int x;
-        private final int y;
 
-        public Coordinate(int x, int y) {
-            this.x = x;
-            this.y = y;
+
+    private static Coordinate transform(Coordinate coordinate, Direction direction) {
+        return new Coordinate(coordinate.getX() + direction.dx, coordinate.getY() + direction.dy);
+    }
+
+    private static Coordinate follow(Coordinate tail, Coordinate head) {
+        int dx = Math.abs(head.getX() - tail.getX());
+        int dy = Math.abs(head.getY() - tail.getY());
+        if (dx <= 1 && dy <= 1) {
+            return tail;
         }
 
-        Coordinate transform(Direction direction) {
-            return new Coordinate(x + direction.dx, y + direction.dy);
+        int tailX = tail.getX(), tailY = tail.getY();
+        // Move diagonally by reducing the difference in Harvard distance to two unit vectors
+        if (head.getX() != tail.getX()) {
+            tailX += (head.getX() - tail.getX()) / dx;
         }
-
-        Coordinate follow(Coordinate head) {
-            int dx = Math.abs(head.x - x);
-            int dy = Math.abs(head.y - y);
-            if (dx <= 1 && dy <= 1) {
-                return this;
-            }
-
-            int tailX = x, tailY = y;
-            // Move diagonally by reducing the difference in Harvard distance to two unit vectors
-            if (head.x != x) {
-                tailX += (head.x - x) / dx;
-            }
-            if (head.y != y) {
-                tailY += (head.y - y) / dy;
-            }
-            return new Coordinate(tailX, tailY);
+        if (head.getY() != tail.getY()) {
+            tailY += (head.getY() - tail.getY()) / dy;
         }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Coordinate that = (Coordinate) o;
-            return x == that.x && y == that.y;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(x, y);
-        }
+        return new Coordinate(tailX, tailY);
     }
 
     private enum Direction {

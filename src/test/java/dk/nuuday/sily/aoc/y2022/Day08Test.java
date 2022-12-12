@@ -19,14 +19,16 @@ public class Day08Test {
 
     @Test
     public void testFindVisibleTreesExample() {
-        long actual = Day08.findVisibleTrees(EXAMPLE_DATA);
+        Day08.Tree[][] data = Day08.createTreeArray(EXAMPLE_DATA);
+
+        long actual = Day08.findVisibleTrees(data);
 
         assertThat(actual, equalTo(21L));
     }
 
     @Test
     public void testFindVisibleTreesData() throws IOException {
-        List<String> data = FileUtil.readLines("y2022/day08.txt");
+        Day08.Tree[][] data = FileUtil.readFile("y2022/day08.txt", Day08::createTreeArray);
 
         long actual = Day08.findVisibleTrees(data);
 
@@ -35,17 +37,19 @@ public class Day08Test {
 
     @Test
     public void testFindTreeHouseCandidatesExample() {
-        int actual = Day08.findTreeHouseCandidates(EXAMPLE_DATA);
+        Day08.Tree[][] data = Day08.createTreeArray(EXAMPLE_DATA);
+
+        int actual = Day08.findTreeHouseCandidates(data);
 
         assertThat(actual, equalTo(8));
     }
 
     @Test
     public void testFindTreeHouseCandidatesData() throws IOException {
-        List<String> data = FileUtil.readLines("y2022/day08.txt");
+        Day08.Tree[][] data = FileUtil.readFile("y2022/day08.txt", Day08::createTreeArray);
 
         int actual = Day08.findTreeHouseCandidates(data);
 
-        assertThat(actual, equalTo(20));
+        assertThat(actual, equalTo(496650));
     }
 }

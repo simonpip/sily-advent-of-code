@@ -1,14 +1,12 @@
 package dk.nuuday.sily.aoc.y2022;
 
+import dk.nuuday.sily.aoc.util.Shared;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class Day08 {
-    private static final int ASCII_NUMBERS_START = 48;
-
-    static long findVisibleTrees(List<String> heights) {
-        Tree[][] treeArray = createTreeArray(heights);
-
+    static long findVisibleTrees(Tree[][] treeArray) {
         for (Tree[] trees : treeArray) {
             int maxHeight = -1;
             for (Tree tree : trees) {
@@ -44,9 +42,7 @@ public class Day08 {
         return maxHeight;
     }
 
-    static int findTreeHouseCandidates(List<String> heights) {
-        Tree[][] treeArray = createTreeArray(heights);
-
+    static int findTreeHouseCandidates(Tree[][] treeArray) {
         for (int x = 1; x < treeArray.length - 1; x++) {
             Tree[] treeLine = treeArray[x];
             for (int y = 1; y < treeLine.length - 1; y++) {
@@ -99,23 +95,10 @@ public class Day08 {
                 .orElseThrow(() -> new RuntimeException("No trees found"));
     }
 
-    private static Tree[][] createTreeArray(List<String> heights) {
-        Tree[][] trees = new Tree[heights.size()][];
-
-        int i = 0;
-        for (String heightLine : heights) {
-            trees[i] = new Tree[heightLine.length()];
-            char[] chars = heightLine.toCharArray();
-            for (int j = 0; j < chars.length; j++) {
-                int height = chars[j] - ASCII_NUMBERS_START;
-
-                trees[i][j] = new Tree(height);
-            }
-
-            i++;
-        }
-
-        return trees;
+    static Tree[][] createTreeArray(List<String> heights) {
+        return Arrays.stream(Shared.convertToCharArray(heights))
+                .map(e -> Shared.stream(e).map(Tree::new).toArray(f -> new Tree[e.length]))
+                .toArray(e -> new Tree[heights.size()][]);
     }
 
     static class Tree {
