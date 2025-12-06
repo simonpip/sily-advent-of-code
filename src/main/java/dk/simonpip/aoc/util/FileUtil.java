@@ -32,10 +32,14 @@ public class FileUtil {
     }
 
     public static <T> T readFile(String resourceName, Function<List<String>, T> convert) throws IOException {
+        return readFile(resourceName, convert, true);
+    }
+
+    public static <T> T readFile(String resourceName, Function<List<String>, T> convert, boolean trim) throws IOException {
         String text = readFile(resourceName);
 
         List<String> strings = Arrays.stream(text.split("\n"))
-                .map(String::trim)
+                .map(line -> trim ? line.trim() : line)
                 .collect(Collectors.toList());
         return convert.apply(strings);
     }
