@@ -1,5 +1,7 @@
 package dk.simonpip.aoc.y2025;
 
+import dk.simonpip.aoc.util.LineUtil;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,7 +41,7 @@ public class Day06 {
     public static List<Problem> convertForFirst(List<String> lines) {
         List<String> copy = new ArrayList<>(lines);
 
-        String operationLine = removeLast(copy);
+        String operationLine = LineUtil.removeLast(copy);
         List<String> operations = getOperations(operationLine);
 
         List<List<Long>> numbers = new ArrayList<>();
@@ -67,7 +69,7 @@ public class Day06 {
     public static List<Problem> convertForSecond(List<String> lines) {
         List<String> copy = new ArrayList<>(lines);
 
-        String operationLine = removeLast(copy);
+        String operationLine = LineUtil.removeLast(copy);
         List<String> operations = getOperations(operationLine);
 
         List<String> transposedStrings = transpose(copy);
@@ -85,13 +87,6 @@ public class Day06 {
             numbers.add(Long.valueOf(transposedString));
         }
         return problems;
-    }
-
-    private static String removeLast(List<String> lines) {
-        String line = lines.get(lines.size() - 1);
-        lines.remove(lines.size() - 1);
-
-        return line;
     }
 
     private static List<String> getOperations(String operationLine) {

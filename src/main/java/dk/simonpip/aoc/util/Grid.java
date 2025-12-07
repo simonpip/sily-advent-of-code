@@ -11,15 +11,15 @@ public class Grid<T> {
     public Grid(List<String> strings, Function<Character, T> convert) {
         height = strings.size();
         width = strings.get(0).length();
-        grid = new Object[width][height];
+        grid = new Object[height][width];
 
-        for (int i = 0; i < strings.size(); i++) {
-            String string = strings.get(i);
+        for (int x = 0; x < strings.size(); x++) {
+            String string = strings.get(x);
 
-            for (int j = 0; j < string.length(); j++) {
-                char letter = string.charAt(j);
+            for (int y = 0; y < string.length(); y++) {
+                char letter = string.charAt(y);
 
-                grid[j][i] = convert.apply(letter);
+                set(x, y, convert.apply(letter));
             }
         }
     }
@@ -27,10 +27,10 @@ public class Grid<T> {
     public Grid(Grid<T> original) {
         this.height = original.height;
         this.width = original.width;
-        this.grid = new Object[width][height];
+        this.grid = new Object[height][width];
 
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
+        for (int y = 0; y < width; y++) {
+            for (int x = 0; x < height; x++) {
                 set(x, y, original.get(x, y));
             }
         }
@@ -39,10 +39,10 @@ public class Grid<T> {
     public Grid(int height, int width, T defaultValue) {
         this.height = height;
         this.width = width;
-        this.grid = new Object[width][height];
+        this.grid = new Object[height][width];
 
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
+        for (int y = 0; y < width; y++) {
+            for (int x = 0; x < height; x++) {
                 set(x, y, defaultValue);
             }
         }
@@ -66,8 +66,8 @@ public class Grid<T> {
 
     protected String stringValue(Function<T, String> stringFunction) {
         StringBuilder stringBuilder = new StringBuilder(width * height);
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
+        for (int x = 0; x < height; x++) {
+            for (int y = 0; y < width; y++) {
                 stringBuilder.append(stringFunction.apply(get(x, y)));
             }
             stringBuilder.append('\n');

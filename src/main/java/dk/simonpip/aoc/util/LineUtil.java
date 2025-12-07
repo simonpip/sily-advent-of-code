@@ -33,4 +33,19 @@ public class LineUtil {
 
         return groups;
     }
+
+    public static String removeFirst(List<String> strings) {
+        return remove(strings, 0);
+    }
+
+    public static String removeLast(List<String> strings) {
+        return remove(strings, strings.size() - 1);
+    }
+
+    public static String remove(List<String> strings, int index) {
+        String output = strings.get(index);
+        strings.remove(index);
+
+        return output;
+    }
 }
