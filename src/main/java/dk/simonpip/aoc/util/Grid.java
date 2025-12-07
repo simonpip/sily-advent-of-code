@@ -36,6 +36,18 @@ public class Grid<T> {
         }
     }
 
+    public Grid(int height, int width, T defaultValue) {
+        this.height = height;
+        this.width = width;
+        this.grid = new Object[width][height];
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                set(x, y, defaultValue);
+            }
+        }
+    }
+
     public int getHeight() {
         return height;
     }

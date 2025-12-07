@@ -1,6 +1,7 @@
 package dk.simonpip.aoc.y2025;
 
 import dk.simonpip.aoc.util.FileUtil;
+import dk.simonpip.aoc.util.Grid;
 import junit.framework.TestCase;
 
 import java.io.IOException;
@@ -10,7 +11,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class Day04Test extends TestCase {
     public void testSolveFirst_Example() throws IOException {
-        boolean[][] grid = FileUtil.readFile("y2025/day04_example.txt", Day04::convert);
+        Grid<Boolean> grid = FileUtil.readFile("y2025/day04_example.txt", Day04::convert);
 
         int actual = Day04.solveFirst(grid).getA();
 
@@ -18,7 +19,7 @@ public class Day04Test extends TestCase {
     }
 
     public void testSolveFirst() throws IOException {
-        boolean[][] grid = FileUtil.readFile("y2025/day04.txt", Day04::convert);
+        Grid<Boolean> grid = FileUtil.readFile("y2025/day04.txt", Day04::convert);
 
         int actual = Day04.solveFirst(grid).getA();
 
@@ -26,7 +27,7 @@ public class Day04Test extends TestCase {
     }
 
     public void testSolveSecond_Example() throws IOException {
-        boolean[][] grid = FileUtil.readFile("y2025/day04_example.txt", Day04::convert);
+        Grid<Boolean> grid = FileUtil.readFile("y2025/day04_example.txt", Day04::convert);
 
         int actual = Day04.solveSecond(grid);
 
@@ -34,7 +35,7 @@ public class Day04Test extends TestCase {
     }
 
     public void testSolveSecond() throws IOException {
-        boolean[][] grid = FileUtil.readFile("y2025/day04.txt", Day04::convert);
+        Grid<Boolean> grid = FileUtil.readFile("y2025/day04.txt", Day04::convert);
 
         int actual = Day04.solveSecond(grid);
 
