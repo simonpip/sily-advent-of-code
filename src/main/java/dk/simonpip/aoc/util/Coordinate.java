@@ -6,6 +6,13 @@ public class Coordinate {
     private final int x;
     private final int y;
 
+    public Coordinate(String line) {
+        String[] split = line.split(",");
+
+        this.x = Integer.parseInt(split[0]);
+        this.y = Integer.parseInt(split[1]);
+    }
+
     public Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
