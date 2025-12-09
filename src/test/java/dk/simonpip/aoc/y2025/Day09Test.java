@@ -40,8 +40,6 @@ public class Day09Test extends TestCase {
 
         long actual = Day09.solveSecond(coordinates);
 
-//        long actual = dk.simonpip.aoc.y2025.test.Day09.doPuzzle2(FileUtil.readLines("y2025/day09.txt"));
-
         assertThat(actual, equalTo(1552139370L));
     }
 }
