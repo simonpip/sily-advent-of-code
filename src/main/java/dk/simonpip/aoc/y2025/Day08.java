@@ -1,12 +1,12 @@
 package dk.simonpip.aoc.y2025;
 
-import dk.simonpip.aoc.util.Vector;
+import dk.simonpip.aoc.util.Coordinate3D;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Day08 {
-    public static long solveFirst(List<Vector> junctionBoxes, int connections) {
+    public static long solveFirst(List<Coordinate3D> junctionBoxes, int connections) {
         List<Connection> connectionList = getConnectionsByDistance(junctionBoxes);
 
         // Select top [connections]
@@ -30,7 +30,7 @@ public class Day08 {
         return circuitSizes.subList(0, 3).stream().reduce(1L, (a, b) -> a * b);
     }
 
-    public static long solveSecond(List<Vector> junctionBoxes) {
+    public static long solveSecond(List<Coordinate3D> junctionBoxes) {
         List<Connection> connectionList = getConnectionsByDistance(junctionBoxes);
 
         // For each connection
@@ -49,7 +49,7 @@ public class Day08 {
         throw new RuntimeException("All connections made, still not single network");
     }
 
-    private static List<Connection> getConnectionsByDistance(List<Vector> junctionBoxes) {
+    private static List<Connection> getConnectionsByDistance(List<Coordinate3D> junctionBoxes) {
         // For each, find all distances
         List<Connection> connectionList = new ArrayList<>(junctionBoxes.size() * junctionBoxes.size());
         for (int lhs = 0; lhs < junctionBoxes.size() - 1; lhs++) {
@@ -93,25 +93,25 @@ public class Day08 {
 
     public static class Connection {
         private final int lhs;
-        private final Vector lhsVector;
+        private final Coordinate3D lhsCoordinate3D;
         private final int rhs;
-        private final Vector rhsVector;
+        private final Coordinate3D rhsCoordinate3D;
         private final double distance;
 
-        public Connection(int lhs, Vector lhsVector, int rhs, Vector rhsVector) {
+        public Connection(int lhs, Coordinate3D lhsCoord, int rhs, Coordinate3D rhsCoord) {
             this.lhs = lhs;
-            this.lhsVector = lhsVector;
+            this.lhsCoordinate3D = lhsCoord;
             this.rhs = rhs;
-            this.rhsVector = rhsVector;
+            this.rhsCoordinate3D = rhsCoord;
 
-            this.distance = lhsVector.distance(rhsVector);
+            this.distance = lhsCoord.distance(rhsCoord);
         }
 
         @Override
         public String toString() {
             return "Connection{" +
-                    "lhs=" + lhsVector +
-                    ", rhs=" + rhsVector +
+                    "lhs=" + lhsCoordinate3D +
+                    ", rhs=" + rhsCoordinate3D +
                     ", distance=" + distance +
                     '}';
         }

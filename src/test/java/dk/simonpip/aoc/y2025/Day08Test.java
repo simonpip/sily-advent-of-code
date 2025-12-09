@@ -1,7 +1,7 @@
 package dk.simonpip.aoc.y2025;
 
 import dk.simonpip.aoc.util.FileUtil;
-import dk.simonpip.aoc.util.Vector;
+import dk.simonpip.aoc.util.Coordinate3D;
 import junit.framework.TestCase;
 
 import java.io.IOException;
@@ -12,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class Day08Test extends TestCase {
     public void testSolveFirst_Example() throws IOException {
-        List<Vector> junctionBoxes = FileUtil.readLines("y2025/day08_example.txt", Vector::new);
+        List<Coordinate3D> junctionBoxes = FileUtil.readLines("y2025/day08_example.txt", Coordinate3D::new);
 
         long actual = Day08.solveFirst(junctionBoxes, 10);
 
@@ -20,7 +20,7 @@ public class Day08Test extends TestCase {
     }
 
     public void testSolveFirst() throws IOException {
-        List<Vector> junctionBoxes = FileUtil.readLines("y2025/day08.txt", Vector::new);
+        List<Coordinate3D> junctionBoxes = FileUtil.readLines("y2025/day08.txt", Coordinate3D::new);
 
         long actual = Day08.solveFirst(junctionBoxes, 1000);
 
@@ -28,7 +28,7 @@ public class Day08Test extends TestCase {
     }
 
     public void testSolveSecond_Example() throws IOException {
-        List<Vector> junctionBoxes = FileUtil.readLines("y2025/day08_example.txt", Vector::new);
+        List<Coordinate3D> junctionBoxes = FileUtil.readLines("y2025/day08_example.txt", Coordinate3D::new);
 
         long actual = Day08.solveSecond(junctionBoxes);
 
@@ -36,7 +36,7 @@ public class Day08Test extends TestCase {
     }
 
     public void testSolveSecond() throws IOException {
-        List<Vector> junctionBoxes = FileUtil.readLines("y2025/day08.txt", Vector::new);
+        List<Coordinate3D> junctionBoxes = FileUtil.readLines("y2025/day08.txt", Coordinate3D::new);
 
         long actual = Day08.solveSecond(junctionBoxes);
 

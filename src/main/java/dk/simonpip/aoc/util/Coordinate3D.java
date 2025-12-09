@@ -2,7 +2,7 @@ package dk.simonpip.aoc.util;
 
 import com.google.common.base.Objects;
 
-public class Vector {
+public class Coordinate3D {
     private final int x;
     private final int y;
     private final int z;
@@ -19,7 +19,7 @@ public class Vector {
         return z;
     }
 
-    public Vector(String coords) {
+    public Coordinate3D(String coords) {
         String[] split = coords.split(",");
 
         this.x = Integer.parseInt(split[0]);
@@ -27,7 +27,7 @@ public class Vector {
         this.z = Integer.parseInt(split[2]);
     }
 
-    public double distance(Vector other) {
+    public double distance(Coordinate3D other) {
         return Math.sqrt(powDifference(x, other.x) + powDifference(y, other.y) + powDifference(z, other.z));
     }
 
@@ -44,8 +44,8 @@ public class Vector {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Vector vector = (Vector) o;
-        return x == vector.x && y == vector.y && z == vector.z;
+        Coordinate3D coordinate3D = (Coordinate3D) o;
+        return x == coordinate3D.x && y == coordinate3D.y && z == coordinate3D.z;
     }
 
     @Override
